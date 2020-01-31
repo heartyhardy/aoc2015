@@ -13,6 +13,7 @@ mod day_12;
 mod day_13;
 mod day_14;
 mod day_15;
+mod day_16;
 
 fn main() {
     //Day 01
@@ -59,4 +60,7 @@ fn main() {
 
     //Day 15
     day_15::run();
+
+    //Day 16
+    day_16::run();
 }
