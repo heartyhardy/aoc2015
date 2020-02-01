@@ -22,24 +22,9 @@ fn find_combinations(container_data:&str)->i32{
         .collect();
     containers.sort_by(|a,b| b.cmp(a));
 
-    let size:i32 = (containers.len()-1) as i32;
-    let count = rcount(&mut containers, EGGNOG_LITRES, size);
+    let size:i32 = containers.len() as i32;
+    let count = rec_count(&mut containers, EGGNOG_LITRES, size, 0);
     return count;
-}
-
-fn rcount(containers:&mut Vec<i32>,target:i32,i:i32)->i32{
-    if target == 0{
-        return 1;
-    }else if target < 0{
-        return 0;
-    }else if i < 0{
-        return 0;
-    }else if target < containers[i as usize]{
-        return rcount(containers, target, i-1);
-    }else{
-        return rcount(containers, target-containers[i as usize], i-1)+
-            rcount(containers, target, i-1)
-    }
 }
 
 fn find_min_combinations(container_data:&str)->i32{
@@ -47,37 +32,41 @@ fn find_min_combinations(container_data:&str)->i32{
         .lines()
         .map(|x| x.parse().unwrap())
         .collect();
-    //containers.sort_by(|a,b| b.cmp(a));
+    containers.sort_by(|a,b| b.cmp(a));
 
-    let size:i32 = containers.len() as i32;
-    let min_cmb = rmin(&mut containers, size, EGGNOG_LITRES);
+    let min_cmb = rmin(&mut containers, EGGNOG_LITRES);
     return min_cmb;
 }
 
-fn rmin(containers:&mut Vec<i32>,size:i32,target:i32)->i32{
-    if target == 0{
-        return 0
+fn rec_count(containers:&mut Vec<i32>,target:i32, size:i32, i:i32)->i32{
+    if size<0{
+        return 0;
+    }else if target==0{
+        return 1;
+    }else if i == containers.len() as i32 || target < 0{
+        return 0;
+    }else {
+        return rec_count(containers, target, size, i+1) +
+            rec_count(containers, target-containers[i as usize], size-1, i+1);
     }
-    let mut res = std::i32::MAX;
+}
 
-    for i in 0..size as usize{
-        if containers[i] <= target{
-            let min_sub = rmin(containers, size, target - containers[i]);
-            
-            if min_sub != std::i32::MAX && (min_sub +1) < res {
-                res = min_sub+1;
-            }
-        }
+fn rmin(containers:&mut Vec<i32>,target:i32)->i32{
+    let (mut i, mut min) = (1, -1);
+    while min <= 0{
+        min = rec_count(containers, target, i, 0);
+        i+=1;
     }
-    return res;
+    return min;
 }
 
 
 pub fn run(){
     let containers = read_container_data("inputs/day-17.txt");
     let count = find_combinations(&containers);
-    println!("{}", count );
-
     let min_count = find_min_combinations(&containers);
-    println!("{}", min_count);
+
+    println!("\n-- Day 17: No Such Thing as Too Much --");
+    println!("\n✳\tAll Combinations: {0:<39} \n\n✴\tMin Combinations: {1:<34}\n", count, min_count);
+    println!("\n-- DONE --\n");
 }

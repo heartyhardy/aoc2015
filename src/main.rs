@@ -17,53 +17,53 @@ mod day_16;
 mod day_17;
 
 fn main() {
-    // //Day 01
-    // day_01::run();
+    //Day 01
+    day_01::run();
 
-    // //Day 02
-    // day_02::run();
+    //Day 02
+    day_02::run();
 
-    // //Day 03
-    // day_03::run();
+    //Day 03
+    day_03::run();
 
-    // //Day 04
-    // day_04::run();
+    //Day 04
+    day_04::run();
 
-    // //Day 05
-    // day_05::run();
+    //Day 05
+    day_05::run();
 
-    // //Day 06
-    // day_06::run();
+    //Day 06
+    day_06::run();
 
-    // //Day 07
-    // day_07::run();
+    //Day 07
+    day_07::run();
 
-    // //Day 08
-    // day_08::run();
+    //Day 08
+    day_08::run();
 
-    // //Day 09
-    // day_09::run();
+    //Day 09
+    day_09::run();
 
-    // //Day 10
-    // day_10::run();
+    //Day 10
+    day_10::run();
 
-    // //Day 11
-    // day_11::run();
+    //Day 11
+    day_11::run();
 
-    // //Day 12
-    // day_12::run();
+    //Day 12
+    day_12::run();
 
-    // //Day 13
-    // day_13::run();
+    //Day 13
+    day_13::run();
 
-    // //Day 14
-    // day_14::run();
+    //Day 14
+    day_14::run();
 
-    // //Day 15
-    // day_15::run();
+    //Day 15
+    day_15::run();
 
-    // //Day 16
-    // day_16::run();
+    //Day 16
+    day_16::run();
 
     //Day 17
     day_17::run();
